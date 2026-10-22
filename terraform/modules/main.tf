@@ -25,6 +25,14 @@ module "cluster" {
   node_machine_type  = var.node_machine_type
 }
 
+module "artifact_registry" {
+  source = "./artifact_registry"
+
+  project_id      = var.project_id
+  region          = var.region
+  repository_name = var.app_repository_name
+}
+
 module "vpn" {
   source = "./vpn"
 

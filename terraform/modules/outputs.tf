@@ -17,3 +17,8 @@ output "vpn_gateway_public_ips" {
   description = "Public IP addresses assigned to the high-availability Cloud VPN gateway."
   value       = module.vpn.gateway_public_ips
 }
+
+output "artifact_registry_repository_url" {
+  description = "Docker repository URL for the application image."
+  value       = module.artifact_registry.docker_repository_url
+}

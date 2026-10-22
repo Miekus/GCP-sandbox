@@ -15,6 +15,12 @@ variable "cluster_name" {
   default     = "sandbox-gke"
 }
 
+variable "app_repository_name" {
+  description = "Artifact Registry repository name for the application container image."
+  type        = string
+  default     = "gcp-sandbox-app"
+}
+
 variable "cluster_location" {
   description = "Zone or region for the Google Kubernetes Engine cluster; the default is zonal to limit sandbox costs."
   type        = string

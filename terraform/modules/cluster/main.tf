@@ -1,3 +1,7 @@
+data "google_project" "current" {
+  project_id = var.project_id
+}
+
 resource "google_project_service" "container" {
   project            = var.project_id
   service            = "container.googleapis.com"
@@ -59,4 +63,10 @@ resource "google_container_node_pool" "sandbox" {
     auto_repair  = true
     auto_upgrade = true
   }
+}
+
+resource "google_project_iam_member" "artifact_registry_reader" {
+  project = var.project_id
+  role    = "roles/artifactregistry.reader"
+  member  = "serviceAccount:${data.google_project.current.number}-compute@developer.gserviceaccount.com"
 }
